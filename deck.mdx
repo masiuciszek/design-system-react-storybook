@@ -1,5 +1,9 @@
-import { themes } from "mdx-deck"
+import { yellow, prism } from "@mdx-deck/themes"
 import Timer from "./components/timer"
+export const theme = {
+  ...yellow,
+  ...prism,
+}
 
 # LIA period 2
 
@@ -7,7 +11,7 @@ import ImgPath from "./images/fun.jpeg"
 
 <Image src={ImgPath} style={{ maxWidth: `900px` }} />
 
-### full time again
+### Let's go!
 
 <Timer />
 
