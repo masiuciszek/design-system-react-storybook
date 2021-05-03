@@ -1,0 +1,17 @@
+{
+  "name": "presentation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "mdx-deck deck.mdx"
+  },
+  "devDependencies": {
+    "@mdx-deck/themes": "^4.1.0",
+    "mdx-deck": "4.0.0"
+  },
+  "dependencies": {
+    "@xstate/react": "^1.3.3",
+    "xstate": "^4.19.0"
+  }
+}
