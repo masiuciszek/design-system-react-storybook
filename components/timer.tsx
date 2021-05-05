@@ -74,7 +74,7 @@ const timerMachine = createMachine<TimerMachineContext, TimerEvents>(
 )
 
 const TimerStyles = styled.section`
-  width: 900px;
+  max-width: 900px;
   margin: 2rem auto;
 `
 
@@ -93,7 +93,7 @@ const Button = styled(motion.button)`
   border: 2px solid #eaeaea;
   font-size: 1.2rem;
   border-radius: 4px;
-  width: 8rem;
+  width: 9.5rem;
   height: 2.2rem;
   cursor: pointer;
   background-color: #333;
