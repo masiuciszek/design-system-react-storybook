@@ -3,6 +3,7 @@ import { useMachine } from "@xstate/react"
 import { motion } from "framer-motion"
 import React, { useEffect } from "react"
 import { assign, createMachine } from "xstate"
+import useKeyPress from "../hooks/key"
 
 interface TimerMachineContext {
   duration: number
@@ -90,14 +91,14 @@ const Body = styled.div`
 `
 
 const Button = styled(motion.button)`
-  border: 2px solid #eaeaea;
+  border: 2px solid #0e182a;
   font-size: 1.2rem;
   border-radius: 4px;
   width: 9.5rem;
   height: 2.2rem;
   cursor: pointer;
-  background-color: #333;
-  color: #fff;
+  background-color: #81a7ff;
+  color: #0e182a;
   outline: none;
 `
 
@@ -105,6 +106,7 @@ const renderTime = (duration: number) => duration.toFixed(2)
 
 const Timer = () => {
   const [state, send] = useMachine(timerMachine)
+  const enterKey = useKeyPress("Enter")
 
   const { duration, elapsed, interval } = state.context
 
@@ -119,14 +121,14 @@ const Timer = () => {
     }
   }, [interval, send, state.value])
 
+  useEffect(() => {
+    enterKey && send("TOGGLE")
+  }, [enterKey])
+
   return (
     <TimerStyles>
       <Body>
-        <p>{state.value}</p>
-
-        <Button onClick={() => send("TOGGLE")} whileHover={{ scale: 1.1 }}>
-          {state.value === "running" ? "pause" : "start"}
-        </Button>
+        <Button whileHover={{ scale: 1.1 }}>{state.value === "running" ? "pause" : "start"}</Button>
 
         <Clock
           animate={{ scale: state.value === "paused" ? 1.1 : 1 }}
